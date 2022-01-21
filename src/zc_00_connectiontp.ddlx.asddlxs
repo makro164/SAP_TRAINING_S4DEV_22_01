@@ -1,0 +1,61 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+    typeNamePlural: 'Connections',
+    typeName: 'Connection',
+    title.value: 'CarrierID',
+    description.value: 'ConnectionID'
+}
+annotate view ZC_00_ConnectionTP with
+{
+  /* Bereiche */
+  @UI.facet: [{ position: 10,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Connection Information' },
+              { position: 20,
+                type: #LINEITEM_REFERENCE,
+                label: 'Flights',
+                targetElement: '_Flights' }]
+
+  /* Felder */
+  @UI.lineItem: [{ position: 10 },
+                 { position: 10, 
+                   type: #FOR_ACTION,
+                   dataAction:'BOPF:SWITCH_DISTANCE_UNIT',
+                   label: 'Switch Distance Unit' }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  CarrierID;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  ConnectionID;
+
+  @UI.identification: [{ position: 30 }]
+  DepartureCountryCode;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 40 }]
+  DepartureCity;
+
+  @UI.identification: [{ position: 50 }]
+  DepartureAirportID;
+
+  @UI.identification: [{ position: 60 }]
+  ArrivalCountryCode;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 70 }]
+  ArrivalCity;
+
+  @UI.identification: [{ position: 80 }]
+  ArrivalAirportID;
+
+  @UI.identification: [{ position: 90 }]
+  @UI.lineItem: [{ position: 50 }]
+  Distance;
+
+  @UI.identification: [{ position: 100 }]
+  DistanceUnit;
+
+}
